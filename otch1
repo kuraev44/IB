@@ -1,0 +1,51 @@
+1. Просмотр списка пользователей:
+    cat /etc/passwd
+2. Просмотр паролей:
+    sudo cat /etc/shadow
+3. Просмотр информации о группах:
+    cat /etc/group
+4. Просмотр паролей групп:
+    sudo cat /etc/gshadow
+Примечание:
+Просмотр информации обо всех пользователяхсистемы (не только локальных) и о группах можно выполнить при помощи getent
+Пример:
+getent passwd
+getent group
+Примеры:
+getent passwd | grep student
+student:x:1000:1000:student:/home/student:/bin/bash
+getent group | grep student:
+student:x:1000:
+5. Создание пользователя:
+    sudo useradd -m -s /bin/bash <user_name>
+6. Изменение настроек учётной записи:
+    sudo usermod -L <user_name>
+    sudo usermod -U <user_name>
+    sudo usermod -aG <groups> <user_name>
+    (на момент включения пользователей в доп группу группа должна быть уже создана)
+    (пример)
+
+    usermod -aG testers,progers.user12 user11
+7. Просмотр информации по отдельной учетной записи
+id<Имя учетной записи>
+Пример:
+id user11
+uid=1002(user11) gid=1002(user11) groups=1002(user11),981(docker),1003(testers),1005(progers)
+8. Создание новой группы (для администратора)
+groupadd <Имя_группы>
+Пример:
+sudo groupadd testers
+sudo groupadd progers
+9. смен пароля для учетной записи
+В режиме пользователя:
+passwd
+В режиме администратора:
+sudo passwd <имя_пользователя>
+10. Смена пароля для группы 
+sudo gpasswd <имя_группы
+Назначение администратора группы (для администратора)
+sudo gpasswd -A <учетная запись> <имя группы>
+Пример:
+sudo gpasswd -A user11 testers
+user11 может администрировать группу testers
+gpasswd testers
