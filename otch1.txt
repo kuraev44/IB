@@ -1,0 +1,15 @@
+1. Просмотр списка пользователей:
+    cat /etc/passwd
+2. Просмотр паролей:
+    sudo cat /etc/shadow
+3. Просмотр информации о группах:
+    cat /etc/group
+4. Просмотр паролей групп:
+    sudo cat /etc/gshadow
+
+5. Создание пользователя:
+    sudo useradd -m -s /bin/bash <user_name>
+6. Изменение настроек учётной записи:
+    sudo usermod -L <user_name>
+    sudo usermod -U <user_name>
+    sudo usermod -aG <groups> <user_name>
